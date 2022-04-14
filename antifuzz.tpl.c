@@ -209,6 +209,51 @@ int w${i}$(unsigned char* buf, unsigned int len){
     uint32_t buf32 = ((unsigned char)buf[index1] << 24) + ((unsigned char)buf[index2] << 16) + \
              ((unsigned char)buf[index3] << 8) + (unsigned char)buf[index4];
     //printf("comparing %x\n", buf32);
+
+    
+    char *src = (char*) malloc(64);
+    strcpy(src, "Hello world!");
+    
+    char *tmp = (char*) malloc(64);
+
+    memcpy(tmp, src,strlen(src)+1);
+
+    memset(src, '7', 7);
+
+    memmove(tmp, src,10);
+
+    if(memcmp(src, tmp, 10) == 0){
+      if(strcmp(src,tmp) == 0){
+        strncat(tmp, src, 16);
+      }
+    }
+
+    free(tmp);
+    free(src);
+
+    
+
+    // memcpy
+    // strlen
+    // malloc
+    // memmove
+    // free
+    // memset
+    // memcmp
+    // strcmp
+    // strncat
+    // vsprintf // will dideliodoo
+    // read  // 
+    // load_bmp //
+    // huffcode //
+    // getName // Missing
+    // getString // missing
+    // new // Missing
+    // delete // missing
+    // ReadImage //missing
+    // png_load //Missing
+    // GET_COLOR // Missing
+
     if(buf32 == ${randByteTen[i]}$) {
       ret = 9;
     } else {
