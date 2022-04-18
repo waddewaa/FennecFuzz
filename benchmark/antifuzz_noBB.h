@@ -1714,7 +1714,7 @@ struct utmpx *antifuzz_getutxent(void) {
 
 static uint8_t wasInit = 0;
 uint32_t seed_mult = 0;
-char* fileContentMult = NULL;
+unsigned char* fileContentMult = NULL;
 #define MAX_FILE_CONTENT_SIZE 512
 
 void antifuzz_exit(unsigned int flags) {
