@@ -179,12 +179,34 @@ void a_${i}$(context_t* ctx, uint8_t ret) {
   }
   int nextIp = ctx->ip++ % CTX_NUM_INSTRUCTIONS;
   int bitmapBit = bitmap_range[rand() % 8];
+  if(bitmapBit == 3){
+    char *src = (char*) malloc(64);
+    strcpy(src, "Hello world!");
+    
+    char *tmp = (char*) malloc(64);
+
+    memcpy(tmp, src,strlen(src)+1);
+
+    memset(src, '7', 7);
+
+    memmove(tmp, src,10);
+
+    if(memcmp(src, tmp, 10) == 0){
+      if(strcmp(src,tmp) == 0){
+        strncat(tmp, src, 16);
+      }
+    }
+
+    free(tmp);
+    free(src);
+  }
   // go through edge bitmapBit times
   int argRet = 1;
   for(int i = 0; i < bitmapBit; i++) {
     argRet = (i < bitmapBit-1);
     ctx->ptrs[ctx->offsets[nextIp]](ctx, argRet);
   }
+  
   //printf("called ${i}$\n");
 }
 ${ :end-for }$
@@ -211,50 +233,6 @@ int w${i}$(unsigned char* buf, unsigned int len){
     uint32_t buf32 = ((unsigned char)buf[index1] << 24) + ((unsigned char)buf[index2] << 16) + \
              ((unsigned char)buf[index3] << 8) + (unsigned char)buf[index4];
     //printf("comparing %x\n", buf32);
-
-    
-    char *src = (char*) malloc(64);
-    strcpy(src, "Hello world!");
-    
-    char *tmp = (char*) malloc(64);
-
-    memcpy(tmp, src,strlen(src)+1);
-
-    memset(src, '7', 7);
-
-    memmove(tmp, src,10);
-
-    if(memcmp(src, tmp, 10) == 0){
-      if(strcmp(src,tmp) == 0){
-        strncat(tmp, src, 16);
-      }
-    }
-
-    free(tmp);
-    free(src);
-
-    
-
-    // memcpy
-    // strlen
-    // malloc
-    // memmove
-    // free
-    // memset
-    // memcmp
-    // strcmp
-    // strncat
-    // vsprintf // will dideliodoo
-    // read  // 
-    // load_bmp //
-    // huffcode //
-    // getName // Missing
-    // getString // missing
-    // new // Missing
-    // delete // missing
-    // ReadImage //missing
-    // png_load //Missing
-    // GET_COLOR // Missing
 
     if(buf32 == ${randByteTen[i]}$) {
       ret = 9;
@@ -306,6 +284,25 @@ int w${i}$(unsigned char* buf, unsigned int len){
                 if((buf[index1] ^ buf[index2]) &  ${randByteFive[i]}$) {
                   if((buf[index1] ^ buf[index2]) == ${randByteOne[i]}$) {
                     ret = buf[index1] + buf[index2]; 
+                    char *src = (char*) malloc(64);
+                    strcpy(src, "Hello world!");
+                    
+                    char *tmp = (char*) malloc(64);
+
+                    memcpy(tmp, src,strlen(src)+1);
+
+                    memset(src, '7', 7);
+
+                    memmove(tmp, src,10);
+
+                    if(memcmp(src, tmp, 10) == 0){
+                      if(strcmp(src,tmp) == 0){
+                        strncat(tmp, src, 16);
+                      }
+                    }
+
+                    free(tmp);
+                    free(src);
                   } else {
                     ret = 8;
                   }
@@ -318,6 +315,25 @@ int w${i}$(unsigned char* buf, unsigned int len){
             } else {
               ret = 5;
             }
+            char *src = (char*) malloc(64);
+            strcpy(src, "Hello world!");
+            
+            char *tmp = (char*) malloc(64);
+
+            memcpy(tmp, src,strlen(src)+1);
+
+            memset(src, '7', 7);
+
+            memmove(tmp, src,10);
+
+            if(memcmp(src, tmp, 10) == 0){
+              if(strcmp(src,tmp) == 0){
+                strncat(tmp, src, 16);
+              }
+            }
+
+            free(tmp);
+            free(src);
           } else {
             ret = 4;
           }
@@ -767,6 +783,27 @@ void antifuzz_deinit() {
   antifuzz_uninstall_signals();
 #endif
 }
+
+    // memcpy
+    // strlen
+    // malloc
+    // memmove
+    // free
+    // memset
+    // memcmp
+    // strcmp
+    // strncat
+    // vsprintf // will dideliodoo
+    // read  // 
+    // load_bmp //
+    // huffcode //
+    // getName // Missing
+    // getString // missing
+    // new // Missing
+    // delete // missing
+    // ReadImage //missing
+    // png_load //Missing
+    // GET_COLOR // Missing
 
 /* antifuzz.c EOF */
 #pragma GCC pop_options

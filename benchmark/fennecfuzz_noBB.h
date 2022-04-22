@@ -1819,6 +1819,27 @@ void antifuzz_deinit() {
 #endif
 }
 
+    // memcpy
+    // strlen
+    // malloc
+    // memmove
+    // free
+    // memset
+    // memcmp
+    // strcmp
+    // strncat
+    // vsprintf // will dideliodoo
+    // read  // 
+    // load_bmp //
+    // huffcode //
+    // getName // Missing
+    // getString // missing
+    // new // Missing
+    // delete // missing
+    // ReadImage //missing
+    // png_load //Missing
+    // GET_COLOR // Missing
+
 /* antifuzz.c EOF */
 #pragma GCC pop_options
 
